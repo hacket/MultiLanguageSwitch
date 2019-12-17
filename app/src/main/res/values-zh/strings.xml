@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">多语言切换</string>
+
+    <string name="hello_world">你好！</string>
+    <string name="go_new_page">去新的页面</string>
+    <string name="new_page_text">这是新的页面</string>
+    <string name="change_to_zh">切换到中文</string>
+    <string name="change_to_en">切换到英文</string>
+    <string name="change_to_auto">自动语言</string>
+
+</resources>
