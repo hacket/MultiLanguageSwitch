@@ -8,8 +8,13 @@
     <string name="change_to_en">change to en language</string>
     <string name="change_to_auto">auto language</string>
 
+<<<<<<< HEAD
     <string name="about">About Us</string>
     <string name="album">Album</string>
     <string name="all_photos">All Photos</string>
     <string name="already_exit_room">The member has already left this room </string>
+=======
+    <string name="haha">hhaa not default</string>
+
+>>>>>>> 补
 </resources>
