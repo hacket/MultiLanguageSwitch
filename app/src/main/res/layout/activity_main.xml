@@ -16,13 +16,27 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:gravity="top"
         android:text="@string/hello_world" />
+
+    <TextView
+        android:id="@+id/tv_test1"
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="top" />
+    <TextView
+        android:id="@+id/tv_test2"
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="top" />
 
     <Button
         android:id="@+id/btn_new_page"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/go_new_page" />
+        android:text="@string/go_settings" />
 
 </LinearLayout>

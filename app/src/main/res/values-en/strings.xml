@@ -2,10 +2,14 @@
     <string name="app_name">MultiLanguageSwitch</string>
 
     <string name="hello_world">Hello World</string>
-    <string name="go_new_page">go_new_page</string>
+    <string name="go_settings">go setting</string>
     <string name="new_page_text">this is a new_page</string>
     <string name="change_to_zh">change to zh language</string>
     <string name="change_to_en">change to en language</string>
     <string name="change_to_auto">auto language</string>
 
+    <string name="about">About Us</string>
+    <string name="album">Album</string>
+    <string name="all_photos">All Photos</string>
+    <string name="already_exit_room">The member has already left this room </string>
 </resources>

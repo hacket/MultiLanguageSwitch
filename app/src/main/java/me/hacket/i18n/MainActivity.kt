@@ -20,10 +20,12 @@ class MainActivity : BaseActivity() {
             resources.configuration.locale
         }
 
-        val s = "Locale.getDefault()=$defaultLocale，locale=$locale"
+        val s = "系统默认Locale：Locale.getDefault()=$defaultLocale\n用户设置的Locale=$locale"
         tv_locale.text = s
-
         Log.d("locale", "MainActivity onCreate locale=$s")
+
+        tv_test1.text = ResUtils.getStr(R.string.already_exit_room)
+        tv_test2.text = applicationContext.resources.getString(R.string.about)
 
         btn_new_page.setOnClickListener {
             startActivity(Intent(this, NewPageActivity::class.java))
