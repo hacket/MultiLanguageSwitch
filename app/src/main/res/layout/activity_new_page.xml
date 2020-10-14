@@ -42,6 +42,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/change_to_en" />
+        <Button
+            android:id="@+id/btn_change_ar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/change_to_ar" />
     </LinearLayout>
 
 </RelativeLayout>

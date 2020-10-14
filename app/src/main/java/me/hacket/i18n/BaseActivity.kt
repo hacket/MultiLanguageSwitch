@@ -1,15 +1,21 @@
 package me.hacket.i18n
 
-import android.os.Bundle
+import android.content.Context
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 
 open class BaseActivity : AppCompatActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        if (LocaleUtils.updateLocale(this, LocaleUtils.getUserSettingLocale(this))) {
-            LocaleUtils.restartAct(this, MainActivity::class.java)
-            finish()
+    override fun attachBaseContext(newBase: Context?) {
+        Log.d(
+            BaseApplication.TAG,
+            "${this.javaClass.simpleName} attachBaseContext newBase=${newBase}"
+        )
+        newBase?.let {
+//            val locale = MultiLangUtils.getUserSettingLocale(it)
+//            MultiLangUtils.changeLanguage(it, locale)
+            super.attachBaseContext(newBase)
         }
     }
+
 }

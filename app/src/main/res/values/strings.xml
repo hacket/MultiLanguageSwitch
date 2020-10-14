@@ -6,6 +6,7 @@
     <string name="new_page_text">this is a new_page（default）</string>
     <string name="change_to_zh">change to zh language（default）</string>
     <string name="change_to_en">change to en language（default）</string>
+    <string name="change_to_ar">change to ar language（default）</string>
     <string name="change_to_auto">auto language（default）</string>
 
     <string name="about">About Us(default)</string>

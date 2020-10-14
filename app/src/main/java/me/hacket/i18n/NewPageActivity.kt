@@ -1,5 +1,6 @@
 package me.hacket.i18n
 
+import android.content.res.Resources
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -22,22 +23,62 @@ class NewPageActivity : BaseActivity() {
         val s = "Locale.getDefault()=$defaultLocale，locale=$locale"
         tv_locale.text = s
 
-        Log.i("locale", "NewPageActivity onCreate locale=$s")
+        Log.d("locale", "NewPageActivity onCreate locale=$s")
 
         btn_change_zh.setOnClickListener {
-            if (LocaleUtils.updateLocale(this, Locale.SIMPLIFIED_CHINESE)) {
-                LocaleUtils.restartAct(this, MainActivity::class.java)
-            }
+//            LanguageUtils.applyLanguage(Locale.CHINA, "me.hacket.i18n.MainActivity")
+
+//            if (MultiLangUtils.needUpdateLocale(this, Locale.SIMPLIFIED_CHINESE)) {
+//                val context =
+//                    MultiLangUtils.changeLanguage(this, Locale.SIMPLIFIED_CHINESE)
+//                MultiLangUtils.changeLanguage(applicationContext, Locale.SIMPLIFIED_CHINESE)
+//                GlobalContext.initContext(context)
+//                MultiLangUtils.restartAct(this, "me.hacket.i18n.MainActivity")
+//            }
+
+
+//            if (LocaleUtils.updateLocale(this, Locale.SIMPLIFIED_CHINESE)) {
+//                LocaleUtils.restartAct(this, MainActivity::class.java)
+//            }
+
+            MultiLangUtils.applyLanguage(this, Locale.CHINA, "me.hacket.i18n.MainActivity")
         }
         btn_change_en.setOnClickListener {
-            if (LocaleUtils.updateLocale(this, Locale.ENGLISH)) {
-                LocaleUtils.restartAct(this, MainActivity::class.java)
-            }
+
+//            LanguageUtils.applyLanguage(Locale.US, "me.hacket.i18n.MainActivity")
+
+//            if (LocaleUtils.updateLocale(this, Locale.ENGLISH)) {
+//                LocaleUtils.restartAct(this, MainActivity::class.java)
+//            }
+
+//            if (MultiLangUtils.needUpdateLocale(this, Locale.ENGLISH)) {
+//                val context = MultiLangUtils.changeLanguage(this, Locale.ENGLISH)
+//                MultiLangUtils.changeLanguage(applicationContext, Locale.ENGLISH)
+//                GlobalContext.initContext(context)
+//                MultiLangUtils.restartAct(this, "me.hacket.i18n.MainActivity")
+//            }
+
+            MultiLangUtils.applyLanguage(this, Locale.ENGLISH, "me.hacket.i18n.MainActivity")
+        }
+        btn_change_ar.setOnClickListener {
+            MultiLangUtils.applyLanguage(this, Locale("ar", "ar"), "me.hacket.i18n.MainActivity")
         }
         btn_change_auto.setOnClickListener {
-            if (LocaleUtils.updateLocale(this, Locale.getDefault())) {
-                LocaleUtils.restartAct(this, MainActivity::class.java)
-            }
+//            LanguageUtils.applySystemLanguage("me.hacket.i18n.MainActivity")
+
+//            if (LocaleUtils.updateLocale(this, Locale.getDefault())) {
+//                LocaleUtils.restartAct(this, MainActivity::class.java)
+//            }
+
+//            if (MultiLangUtils.needUpdateLocale(this, Locale.getDefault())) {
+//                val context = MultiLangUtils.changeLanguage(this, Locale.getDefault())
+//                MultiLangUtils.changeLanguage(applicationContext, Locale.getDefault())
+//                GlobalContext.initContext(context)
+//                MultiLangUtils.restartAct(this, "me.hacket.i18n.MainActivity")
+//            }
+
+
+            MultiLangUtils.applySystemLanguage(this, "me.hacket.i18n.MainActivity")
         }
     }
 }

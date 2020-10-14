@@ -32,6 +32,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="top" />
+    <TextView
+        android:id="@+id/tv_test3"
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="top" />
+    <TextView
+        android:id="@+id/tv_test4"
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="top" />
+
+    <Button
+        android:id="@+id/btn_get_album"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/album" />
 
     <Button
         android:id="@+id/btn_new_page"
