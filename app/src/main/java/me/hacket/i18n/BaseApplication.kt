@@ -1,9 +1,10 @@
 package me.hacket.i18n
 
 import android.app.Application
-import android.content.Context
 import android.content.res.Configuration
 import android.util.Log
+import me.hacket.i18n.utils.GlobalContext
+import me.hacket.i18n.utils.MultiLangUtils
 
 class BaseApplication : Application() {
 

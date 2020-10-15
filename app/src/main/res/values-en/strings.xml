@@ -1,20 +1,21 @@
 <resources>
     <string name="app_name">MultiLanguageSwitch</string>
 
+    <string name="change_to_auto">Follow system</string>
+
+    <string name="title_setting">Settings</string>
+    <string name="title_tab_mine">Mine</string>
+    <string name="title_tab_recommend">Recommend</string>
+
     <string name="hello_world">Hello World</string>
     <string name="go_settings">go setting</string>
+    <string name="go_webview">open webview</string>
     <string name="new_page_text">this is a new_page</string>
-    <string name="change_to_zh">change to zh language</string>
-    <string name="change_to_en">change to en language</string>
-    <string name="change_to_auto">auto language</string>
 
-<<<<<<< HEAD
+
     <string name="about">About Us</string>
     <string name="album">Album</string>
     <string name="all_photos">All Photos</string>
     <string name="already_exit_room">The member has already left this room </string>
-=======
-    <string name="haha">hhaa not default</string>
 
->>>>>>> 补
 </resources>

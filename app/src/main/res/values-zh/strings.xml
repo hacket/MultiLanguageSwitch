@@ -1,12 +1,16 @@
 <resources>
     <string name="app_name">多语言切换</string>
 
+    <string name="change_to_auto">跟随系统</string>
+
+    <string name="title_setting">设置</string>
+    <string name="title_tab_mine">我的</string>
+    <string name="title_tab_recommend">推荐</string>
+
     <string name="hello_world">你好！</string>
     <string name="go_settings">去设置</string>
+    <string name="go_webview">去Webview</string>
     <string name="new_page_text">这是新的页面</string>
-    <string name="change_to_zh">切换到中文</string>
-    <string name="change_to_en">切换到英文</string>
-    <string name="change_to_auto">自动语言</string>
 
     <string name="about">关于</string>
     <string name="album">相册</string>

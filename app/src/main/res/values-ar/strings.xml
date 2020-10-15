@@ -1,4 +1,11 @@
 <resources>
+
+    <string name="change_to_auto">اتبع النظام</string>
+
+    <string name="title_setting">الإعدادت</string>
+    <string name="title_tab_mine">خاصة بي</string>
+    <string name="title_tab_recommend">موصى</string>
+
     <string name="about">حولنا</string>
     <string name="album">البوم الصور</string>
     <string name="all_photos">كل الصور</string>

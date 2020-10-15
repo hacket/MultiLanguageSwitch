@@ -1,4 +1,4 @@
-package me.hacket.i18n;
+package me.hacket.i18n.utils;
 
 import android.app.Application;
 import android.content.Context;

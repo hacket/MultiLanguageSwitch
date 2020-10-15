@@ -1,4 +1,4 @@
-package me.hacket.i18n;
+package me.hacket.i18n.utils;
 
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -7,6 +7,8 @@ import androidx.annotation.ArrayRes;
 import androidx.annotation.ColorInt;
 import androidx.annotation.DimenRes;
 import androidx.annotation.StringRes;
+
+import me.hacket.i18n.utils.GlobalContext;
 
 /**
  * 获取资源

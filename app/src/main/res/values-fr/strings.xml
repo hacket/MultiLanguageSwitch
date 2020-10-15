@@ -1,0 +1,14 @@
+<resources>
+
+    <string name="change_to_auto">Suivez le système</string>
+
+    <string name="title_setting">Set</string>
+    <string name="title_tab_mine">Mon</string>
+    <string name="title_tab_recommend">Hot</string>
+
+    <string name="about">À propos de nous</string>
+    <string name="album">Album french</string>
+    <string name="all_photos">Toutes les photos</string>
+    <string name="already_exit_room">Le membre a déjà quitté cette salle</string>
+
+</resources>

@@ -3,65 +3,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_locale"
-        android:layout_margin="10dp"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="top" />
+        android:layout_margin="10dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:gravity="top"
-        android:text="@string/hello_world" />
+        <Button
+            android:id="@+id/btn_new_page"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/go_settings"
+            android:textAllCaps="false" />
 
-    <TextView
-        android:id="@+id/tv_test1"
-        android:layout_margin="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="top" />
-    <TextView
-        android:id="@+id/tv_test2"
-        android:layout_margin="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="top" />
-    <TextView
-        android:id="@+id/tv_test3"
-        android:layout_margin="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="top" />
-    <TextView
-        android:id="@+id/tv_test4"
-        android:layout_margin="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="top" />
+        <Button
+            android:id="@+id/btn_go_webview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/go_webview"
+            android:textAllCaps="false" />
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_get_album"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/album" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@android:color/darker_gray" />
 
-    <Button
-        android:id="@+id/btn_new_page"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/go_settings" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:gravity="top"
-        android:text="@string/haha" />
+        <include layout="@layout/layout_content" />
 
+    </ScrollView>
 </LinearLayout>

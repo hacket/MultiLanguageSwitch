@@ -1,21 +1,27 @@
 <resources>
-    <string name="app_name">MultiLanguageSwitch</string>
+    <string name="app_name">MultiLanguageSwitch(default)</string>
+
+    <string name="change_to_zh" translatable="false">中文</string>
+    <string name="change_to_en" translatable="false">English</string>
+    <string name="change_to_ar" translatable="false">السعودية</string>
+    <string name="change_to_fr" translatable="false">France</string>
+    <string name="change_to_auto">Follow system（default）</string>
+
+    <string name="title_setting">Settings（default）</string>
+    <string name="title_tab_mine">Mine（default）</string>
+    <string name="title_tab_recommend">Recommend（default）</string>
+
 
     <string name="hello_world">Hello World（default）</string>
     <string name="go_settings">go_settings（default）</string>
+    <string name="go_webview">go_webview（default）</string>
     <string name="new_page_text">this is a new_page（default）</string>
-    <string name="change_to_zh">change to zh language（default）</string>
-    <string name="change_to_en">change to en language（default）</string>
-    <string name="change_to_ar">change to ar language（default）</string>
-    <string name="change_to_auto">auto language（default）</string>
 
-<<<<<<< HEAD
+
+
     <string name="about">About Us(default)</string>
     <string name="album">Album(default)</string>
     <string name="all_photos">All Photos(default)</string>
     <string name="already_exit_room">The member has already left this room (default)</string>
-=======
-    <string name="haha">hhaa default value</string>
->>>>>>> 补
 
 </resources>

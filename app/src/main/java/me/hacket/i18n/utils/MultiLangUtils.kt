@@ -1,10 +1,9 @@
-package me.hacket.i18n
+package me.hacket.i18n.utils
 
 import android.app.Activity
 import android.app.Application
 import android.content.ComponentName
 import android.content.Context
-import android.content.ContextWrapper
 import android.content.Intent
 import android.content.res.Configuration
 import android.content.res.Resources
@@ -15,7 +14,6 @@ import android.util.DisplayMetrics
 import android.util.Log
 import com.google.gson.Gson
 import java.util.*
-
 
 object MultiLangUtils {
 
@@ -33,11 +31,28 @@ object MultiLangUtils {
 
     private val gson = Gson()
 
+    @JvmStatic
     fun init(app: Application) {
-        app.registerActivityLifecycleCallbacks(object : EmptyActivityLifecycleCallbacks {
+        val userSettingLocale = getUserSettingLocale(app)
+        if (needUpdateLocale(app, userSettingLocale)) {
+            changeLanguage(app, userSettingLocale)
+        } else {
+            Log.w(TAG, "init 不需要更新语言 $userSettingLocale")
+        }
+        app.registerActivityLifecycleCallbacks(object :
+            EmptyActivityLifecycleCallbacks {
             override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
                 super.onActivityCreated(activity, savedInstanceState)
-                applyLanguage(activity, getUserSettingLocale(activity))
+                Log.d(TAG, "onActivityCreated $activity")
+                val userSettingLocale = getUserSettingLocale(activity)
+                if (!needUpdateLocale(activity, userSettingLocale)) {
+                    Log.w(
+                        TAG,
+                        "applyLanguage 不需要更新语言 ${userSettingLocale}, context=$activity"
+                    )
+                } else {
+                    changeLanguage(activity, userSettingLocale)
+                }
             }
         })
     }
@@ -76,7 +91,7 @@ object MultiLangUtils {
      * @param context Context
      * @return Locale
      */
-    private fun getCurrentLocale(context: Context): Locale {
+    fun getCurrentLocale(context: Context): Locale {
         val locale = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) { // 7.0有多语言设置获取顶部的语言
             context.resources.configuration.locales[0]
         } else {
@@ -96,8 +111,9 @@ object MultiLangUtils {
         val sp =
             context.getSharedPreferences(LOCALE_FILE, Context.MODE_PRIVATE)
         val edit = sp.edit()
-        val localeToJson = localeToJson(locale)
-        Log.w(TAG, "LocaleSwitchUtils#saveUserSettingLocale(保存用户设置的Locale)=$locale")
+        val localeToJson =
+            localeToJson(locale)
+        Log.e(TAG, "LocaleSwitchUtils#saveUserSettingLocale(保存用户设置的Locale)=$locale")
         return edit.putString(LOCALE_KEY, localeToJson).apply()
     }
 
@@ -123,26 +139,54 @@ object MultiLangUtils {
 
     fun applySystemLanguage(context: Context, activityClassName: String? = null) {
         val systemLocale = getSystemLocale()
-        if (!needUpdateLocale(context, systemLocale)) {
+        if (!needUpdateLocale(context, systemLocale)
+            && !needUpdateLocale(context.applicationContext, systemLocale)
+        ) {
             return
         }
+        changeLanguage(
+            context.applicationContext,
+            systemLocale
+        )
         changeLanguage(context, systemLocale)
-        changeLanguage(context.applicationContext, systemLocale)
-        saveUserSettingLocale(context, systemLocale)
+        saveUserSettingLocale(
+            context,
+            systemLocale
+        )
         if (!activityClassName.isNullOrBlank()) {
-            restartActivity(context, activityClassName)
+            restartActivity(
+                context,
+                activityClassName
+            )
         }
     }
 
     fun applyLanguage(context: Context, newUserLocale: Locale, activityClassName: String? = null) {
-        if (!needUpdateLocale(context, newUserLocale)) {
+        if (!needUpdateLocale(
+                context,
+                newUserLocale
+            ) && !needUpdateLocale(context.applicationContext, newUserLocale)
+        ) {
+            Log.w(TAG, "applyLanguage 不需要更新语言 ${getUserSettingLocale(context)}, context=$context")
             return
         }
-        changeLanguage(context, newUserLocale)
-        changeLanguage(context.applicationContext, newUserLocale)
-        saveUserSettingLocale(context, newUserLocale)
+        changeLanguage(
+            context.applicationContext,
+            newUserLocale
+        )
+        changeLanguage(
+            context,
+            newUserLocale
+        )
+        saveUserSettingLocale(
+            context,
+            newUserLocale
+        )
         if (!activityClassName.isNullOrBlank()) {
-            restartActivity(context, activityClassName)
+            restartActivity(
+                context,
+                activityClassName
+            )
         }
     }
 
@@ -153,7 +197,7 @@ object MultiLangUtils {
         val resources: Resources = context.resources
         val dm: DisplayMetrics = resources.displayMetrics
         val config: Configuration = resources.configuration
-        Log.e(TAG, "changeLanguage修改语言为:" + newUserLocale.language)
+        Log.e(TAG, "changeLanguage修改语言为:" + newUserLocale.language + " context=${context}")
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             val localeList = LocaleList(newUserLocale)
             LocaleList.setDefault(localeList)
@@ -172,41 +216,6 @@ object MultiLangUtils {
     }
 
     /**
-     * 更新Locale
-     *
-     * @param context       Context
-     * @param newUserLocale New User Locale
-     */
-    @JvmStatic
-    fun updateLocale(context: Context, newUserLocale: Locale): Boolean {
-        if (needUpdateLocale(context, newUserLocale)) {
-            val resources = context.resources
-            val config: Configuration = resources.configuration
-            val dm: DisplayMetrics = resources.displayMetrics
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-                config.setLocale(newUserLocale)
-                if (context is Application) {
-                    val newContext = context.createConfigurationContext(config)
-                    try {
-                        val mBaseField = ContextWrapper::class.java.getDeclaredField("mBase")
-                        mBaseField.isAccessible = true
-                        mBaseField[context] = newContext
-                    } catch (ignored: Exception) { /**/
-                    }
-                }
-            } else {
-                config.locale = newUserLocale
-            }
-            resources.updateConfiguration(config, dm)
-            Log.w(TAG, "LocaleSwitchUtils#updateLocale（更新Locale）$newUserLocale")
-//            ResUtils.updateRes(resources)
-            saveUserSettingLocale(context, newUserLocale)
-            return true
-        }
-        return false
-    }
-
-    /**
      * 判断需不需要更新
      *
      * @param context       Context
@@ -214,7 +223,7 @@ object MultiLangUtils {
      * @return true / false
      */
     private fun needUpdateLocale(context: Context, newUserLocale: Locale?): Boolean {
-        return newUserLocale != null && getCurrentLocale(context) != newUserLocale
+        return newUserLocale != null && !getCurrentLocale(context).isSameLanguage(newUserLocale)
     }
 
     /**
@@ -223,7 +232,10 @@ object MultiLangUtils {
      * @return 是否是设置值
      */
     fun isSetValue(context: Context): Boolean {
-        return needUpdateLocale(context, getUserSettingLocale(context))
+        return needUpdateLocale(
+            context,
+            getUserSettingLocale(context)
+        )
     }
 
     /**
@@ -244,7 +256,7 @@ object MultiLangUtils {
     private fun restartActivity(context: Context, activityClassName: String) {
         val intent = Intent()
         intent.component = ComponentName(context, activityClassName)
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK)
         context.startActivity(intent)
     }
 
