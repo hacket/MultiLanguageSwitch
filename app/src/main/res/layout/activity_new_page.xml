@@ -10,8 +10,8 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?android:actionBarSize"
-        android:minHeight="?android:actionBarSize" />
-
+        android:minHeight="?android:actionBarSize"
+        android:visibility="gone" />
 
     <HorizontalScrollView
         android:layout_width="match_parent"

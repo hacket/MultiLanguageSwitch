@@ -1,5 +1,6 @@
 package me.hacket.i18n
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -11,7 +12,7 @@ import kotlinx.android.synthetic.main.layout_content.*
 import me.hacket.i18n.utils.*
 import java.util.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : Activity() {
 
 
     enum class EnumTest(val s: String) {
@@ -28,6 +29,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+//        MultiLangUtils.changeLanguage(this, Locale.FRANCE)
 
         init()
         test()
@@ -59,8 +62,9 @@ class MainActivity : AppCompatActivity() {
         val localeText = """
         Locale.getDefault()#Locale=$defaultLocale(${defaultLocale.hashCode()})
         Activity#Locale=$locale1(${locale1.hashCode()})
-        application#Locale=$locale2(${locale2.hashCode()})
-        applicationContext#Locale=$locale3(${locale3.hashCode()})
+        Activity#getSysPreferredLocale=${getSysPreferredLocale(this)}
+        Application#Locale=$locale2(${locale2.hashCode()})
+        ApplicationContext#Locale=$locale3(${locale3.hashCode()})
         Resources.getSystem()#Locale=$locale4(${locale4.hashCode()})
         GlobalContext.getAppContext()#Locale=$locale5(${locale5.hashCode()})
         GlobalContext.getApplication()#Locale=$locale6(${locale6.hashCode()})

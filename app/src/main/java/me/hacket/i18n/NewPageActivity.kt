@@ -19,8 +19,8 @@ class NewPageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_page)
 
-        toolbar.title = resources.getString(R.string.title_setting)
-        toolbar.background = ColorDrawable(resources.getColor(R.color.colorPrimary))
+//        toolbar.title = resources.getString(R.string.title_setting)
+//        toolbar.background = ColorDrawable(resources.getColor(R.color.colorPrimary))
 
         btn_change_zh.setOnClickListener {
             MultiLangUtils.applyLanguage(this, Locale.CHINA, "me.hacket.i18n.MainActivity")
@@ -59,6 +59,7 @@ class NewPageActivity : AppCompatActivity() {
         val localeText = """
         Locale.getDefault()#Locale=$defaultLocale(${defaultLocale.hashCode()})
         Activity#Locale=$locale1(${locale1.hashCode()})
+        Activity#getSysPreferredLocale=${getSysPreferredLocale(this)}
         application#Locale=$locale2(${locale2.hashCode()})
         applicationContext#Locale=$locale3(${locale3.hashCode()})
         Resources.getSystem()#Locale=$locale4(${locale4.hashCode()})

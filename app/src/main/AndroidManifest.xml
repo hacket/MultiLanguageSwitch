@@ -15,7 +15,8 @@
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
         <activity android:name=".WebActivity" />
-        <activity android:name=".NewPageActivity" />
+        <activity
+            android:name=".NewPageActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
