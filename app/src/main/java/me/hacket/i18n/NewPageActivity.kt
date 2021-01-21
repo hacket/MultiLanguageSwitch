@@ -23,16 +23,16 @@ class NewPageActivity : AppCompatActivity() {
 //        toolbar.background = ColorDrawable(resources.getColor(R.color.colorPrimary))
 
         btn_change_zh.setOnClickListener {
-            MultiLangUtils.applyLanguage(this, Locale.CHINA, "me.hacket.i18n.MainActivity")
+            MultiLangUtils.applyLanguage(this, Locale.CHINA, "me.hacket.i18n.MainActivity", true)
         }
         btn_change_en.setOnClickListener {
-            MultiLangUtils.applyLanguage(this, Locale.US, "me.hacket.i18n.MainActivity")
+            MultiLangUtils.applyLanguage(this, Locale.US, "me.hacket.i18n.MainActivity", true)
         }
         btn_change_ar.setOnClickListener {
-            MultiLangUtils.applyLanguage(this, arLocale(), "me.hacket.i18n.MainActivity")
+            MultiLangUtils.applyLanguage(this, arLocale(), "me.hacket.i18n.MainActivity", true)
         }
         btn_change_fr.setOnClickListener {
-            MultiLangUtils.applyLanguage(this, Locale.FRANCE, "me.hacket.i18n.MainActivity")
+            MultiLangUtils.applyLanguage(this, Locale.FRANCE, "me.hacket.i18n.MainActivity", true)
         }
         btn_change_auto.setOnClickListener {
             MultiLangUtils.applySystemLanguage(this, "me.hacket.i18n.MainActivity")

@@ -23,7 +23,11 @@ class BaseApplication : Application() {
 
     override fun onConfigurationChanged(newConfig: Configuration?) {
         Log.i(TAG, "BaseApplication onConfigurationChanged newConfig=${newConfig}")
-        MultiLangUtils.applyLanguage(this, MultiLangUtils.getUserSettingLocale(this))
+        MultiLangUtils.applyLanguage(
+            this,
+            MultiLangUtils.getUserSettingLocale(this),
+            saveConfig = true
+        )
         super.onConfigurationChanged(newConfig)
     }
 
